@@ -7,6 +7,7 @@ import './db.js';
 import express from 'express';
 const app = express()
 import routes from './routes/index.js';
+app.use(express.json()); 
 
 app.use("/api",routes )
 

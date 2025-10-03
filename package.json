@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-   "type": "module",
+  "type": "module",
   "scripts": {
     "dev": "nodemon index.js",
     "start": "node index.js"
@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/kgonchuk/admin-dashboard-backend#readme",
   "dependencies": {
+    "bcrypt": "^6.0.0",
     "cors": "^2.8.5",
     "dotenv": "^17.2.3",
     "express": "^5.1.0",

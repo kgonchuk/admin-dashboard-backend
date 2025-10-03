@@ -1,30 +1,26 @@
 import userSchema from '../models/user.js';
+import bcrypt from "bcrypt"
+
+
 
 async function registerUser(req, res, next) {
+    const {name,email,password}=req.body;
     try{
-    const newUser= await userSchema.create(req.body);
-    console.log(newUser);
-    res.status(201).send(newUser);
-  }
-catch(err){
-next(err)
-}
-}
-
-async function loginUser(req, res, next) {
-    const { email, password } = req.body;
-    try {
-        const user = await userSchema.findOne({ email });
-        if (!user || user.password !== password) {
-            return res.status(401).send('Invalid email or password');
+        const user= await userSchema.findOne({email:email});
+        if(!user===null){
+            return res.status(400).json({message:"User already exists"})
         }
-        res.send('Login successful');
-    } catch (err) {
-        next(err);
-    }
+        const hashedPassword= await bcrypt.hash(password,10);
+        await userSchema.create({name,email,password:hashedPassword});
+        res.status(201).json({message:"User created successfully"})
+    }   catch(err){
+     next(err )
+
 }
 
+
+}
 export { 
-   registerUser,
-   loginUser
+registerUser
+
 }
