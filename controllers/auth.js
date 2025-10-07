@@ -96,11 +96,20 @@ res.json([{ accessToken, refreshToken: newRefreshToken }]);
   }
 };
 
+async function getCurrentUser (req, res, next) {
+  try {
+    const { name, email } = req.user;
+    res.json({ name, email });
+  } catch (error) {
+    next(error);
+  }
+};
+
 
 export { 
 registerUser,
 loginUser, 
 logoutUser,
 getCurrent,
-refresh
+refresh, getCurrentUser
 }
