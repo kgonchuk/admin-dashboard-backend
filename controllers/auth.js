@@ -96,14 +96,35 @@ res.json([{ accessToken, refreshToken: newRefreshToken }]);
   }
 };
 
+
 async function getCurrentUser (req, res, next) {
   try {
-    const { name, email } = req.user;
-    res.json({ name, email });
+
+    if (!req.user) {
+      return res.status(404).json({ message: 'User data not available' });
+    }
+
+    // 🎯 Формуємо відповідь, повертаючи лише необхідні поля
+    const userInfo = {
+      name: req.user.name || req.user.email.split('@')[0], // Якщо імені немає, використовуємо частину email
+      email: req.user.email,
+    };
+
+    return res.status(200).json(userInfo);
   } catch (error) {
     next(error);
   }
 };
+
+
+// async function getCurrentUser (req, res, next) {
+//   try {
+//     const { name, email } = req.user;
+//     res.json({ name, email });
+//   } catch (error) {
+//     next(error);
+//   }
+// };
 
 
 export { 

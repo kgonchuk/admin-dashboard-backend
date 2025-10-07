@@ -9,7 +9,7 @@ router.post('/register',authController.registerUser);
 router.post('/login',authController.loginUser);
 router.post('/logout', authenticate,authController.logoutUser);
 router.post('/refresh', authController.refresh);
-router.get('/user-info', authController.getCurrent);
+router.get('/user-info', authenticate, authController.getCurrent);
 
 
 
