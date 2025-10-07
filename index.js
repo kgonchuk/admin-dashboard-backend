@@ -1,17 +1,15 @@
 
 
 import 'dotenv/config';
-// import './db/index.js'; //connect to db
 import './db.js';
 import cors from "cors";
-
 import express from 'express';
 
 const app = express()
 import routes from './routes/index.js';
 app.use(express.json()); 
 
-app.use("/api",routes )
+app.use("/api/user",routes )
 app.use(cors({
   origin: ['http://localhost:3000', 'http://127.0.0.1:3000'],
   credentials: true
