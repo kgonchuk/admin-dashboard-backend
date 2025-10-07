@@ -1,10 +1,5 @@
 import express from 'express'; 
 const router = express.Router();
-// import * as LoginController from '../controllers/auth.js';
-// import * as RegisterController from '../controllers/auth.js';
-// import authenticate from '../middlewares/authenticate.js';
-// import * as LogoutController from '../controllers/auth.js';
-// import * as authController from '../controllers/auth.js';
 
 import * as authController from '../controllers/auth.js';
 import authenticate from '../middlewares/authenticate.js';
