@@ -1,8 +1,8 @@
-import supllierSchems from "../models/supplier.js"
+import Suplier from "../models/supplier.js"
 
 async function getSuplliers(req, res, next) {
     try{
-    const supllier= await supllierSchems.find();
+    const supllier= await Suplier.find();
     res.send(supllier);
     }catch(err){
      next(err)
@@ -11,7 +11,7 @@ async function getSuplliers(req, res, next) {
 
 async function createSuplliers(req, res, next) {
     try{
-    const newSupllier= await supllierSchems.create(req.body);
+    const newSupllier= await Suplier.create(req.body);
     console.log(newSupllier);
     res.status(201).send(newSupllier);
   }
@@ -23,7 +23,7 @@ next(err)
 async function updateSupllier(req, res, next) {
     const{ supplierId }=req.params;
     try{
-const result = await supllierSchems.findByIdAndUpdate(supplierId, req.body, { new: true });
+const result = await Suplier.findByIdAndUpdate(supplierId, req.body, { new: true });
  if(result===null){
  res.status(404).send(`Supplier with id ${supplierId} not found`);
     }
