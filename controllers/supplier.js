@@ -16,7 +16,7 @@ async function createSuplliers(req, res, next) {
     res.status(201).json(newSupllier);
   }
 catch(err){
-    // console.log("Error creating suplier:", err);
+    console.log("Error creating suplier:", err);
 next(err)
 }
 }
