@@ -11,11 +11,13 @@ async function getSuplliers(req, res, next) {
 
 async function createSuplliers(req, res, next) {
     try{
+         console.log("Received Data:", req.body);
     const newSupllier= await Suplier.create(req.body);
     console.log("Create suplier:",newSupllier);
     res.status(201).json(newSupllier);
   }
 catch(err){
+       console.error("Mongoose/Controller Error:", error); 
     console.log("Error creating suplier:", err);
 next(err)
 }
