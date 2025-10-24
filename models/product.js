@@ -4,10 +4,10 @@ const productSchema = new mongoose.Schema({
     category: {
     type: String,
     enum: ['Medicine', 'Head', 'Hand', 'Dental Care', 'Skin Care', 'Eye Care', 'Vitamins & Supplements', 'Orthopedic Products', 'Baby Care'],
-    required: true // Це мало б бути коректно.
+    required: true
 },
     stock: { type: Number, required: true },
-    suppliers:String,
+     suppliers:  { type: String, required: true },
     price: { type: Number, required: true },
 
 
