@@ -7,7 +7,7 @@ import suppliersRouter from './suppliers.js';
 import ordersRouter from './orders.js';
 import authRouter from './auth.js';
 import customersRouter from './customer.js';
-
+import dashboardRouter from './dashboard.js';
 
 
 router.use("/products",productsRouter)
@@ -15,6 +15,7 @@ router.use("/suppliers",suppliersRouter)
 router.use("/orders",ordersRouter)
 router.use("/user",authRouter)
 router.use("/customers",customersRouter);
+router.use("/dashboard", dashboardRouter);
 
 
 export default router;
