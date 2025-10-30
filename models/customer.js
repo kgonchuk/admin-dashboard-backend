@@ -6,7 +6,11 @@ const customerSchema = new mongoose.Schema({
     address: {type: String,required: true},
     date: { type: Date, required: true },
     phone: { type: Number, required: true },
-
+   spent: {
+      type: Number,
+      min: 0,
+      required: [true, 'Spent is required']
+    },
 
 
 },
