@@ -7,22 +7,20 @@ async function getDashboard(req, res, next){
    try {
         const dashboard = await incomeExpensesSchema.find();
         
-        // Використовуємо .estimatedDocumentCount() (для діагностики)
-        const productsCount = await productSchema.find().estimatedDocumentCount();
-        const suppliersCount = await supplierSchema.find().estimatedDocumentCount();
-        const customersCount = await customerSchema.find().estimatedDocumentCount();
+        // Оновлено: Використовуємо ефективний метод countDocuments()
+        const productsCount = await productSchema.countDocuments();
+        const suppliersCount = await supplierSchema.countDocuments();
+        const customersCount = await customerSchema.countDocuments();
         
         const customers = await customerSchema.find().sort({ register_date: -1 }).limit(5);
         
-        // КЛЮЧОВЕ ВИПРАВЛЕННЯ: Повертаємо дані в обгортці 'data'
+        // Повертаємо дані в обгортці 'data'
         res.json({ 
             status: "success",
             data: {
-                // Використовуємо імена полів, які очікує Redux Slice
                 allProducts: productsCount,
                 allSuppliers: suppliersCount,
                 allCustomers: customersCount,
-                // Використовуємо імена полів, які очікує Redux Slice
                 incomeExpenses: dashboard, 
                 lastCustomers: customers, 
             }

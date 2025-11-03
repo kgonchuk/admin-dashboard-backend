@@ -6,7 +6,7 @@ import express from 'express';
 const app = express()
 import routes from './routes/index.js';
 app.use(cors({
-  origin: ['http://localhost:3000', 'https://admin-dashboard-backend-1-76pt.onrender.com'], credentials: true}));
+  origin: ['http://localhost:3000', 'https://admin-dashboard-backend-1-76pt.onrender.com','https://kgonchuk.github.io'], credentials: true}));
 app.use(express.json()); 
 
 app.use("/api",routes )
