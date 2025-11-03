@@ -5,9 +5,8 @@ import express from 'express';
 
 const app = express()
 import routes from './routes/index.js';
-app.use(cors());
-// app.use(cors({
-//   origin: ['http://localhost:3000', 'https://admin-dashboard-backend-1-76pt.onrender.com','https://kgonchuk.github.io'], credentials: true}));
+app.use(cors({
+  origin: ['http://localhost:3000', 'https://github.com/kgonchuk','https://kgonchuk.github.io'], credentials: true}));
 app.use(express.json()); 
 
 app.use("/api",routes )
